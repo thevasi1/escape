@@ -1,10 +1,10 @@
-function login() {
-    checkLoginData();
+async function login() {
+    await checkLoginData();
     window.location.replace("../form/form.html");
 }
 
 async function checkLoginData() {
-    const data = {email: "guzami@at.me", password:"0000"}
+    const data = {"email-input": "guzami@at.me", "password-input":"0000"}
     const headers = { "Content-Type": "application/json" };
     const init = {
         method: "POST",
