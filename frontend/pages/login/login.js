@@ -1,18 +1,27 @@
-async function login() {
-    await checkLoginData();
-    window.location.replace("../form/form.html");
+function login() {
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
+
+    checkLoginData(email, password).then(message => {
+        console.log(message);
+        if (message["status"] === "ERROR") {
+            throw new Error(message["message"]);
+          }
+          else {
+            window.location.replace("../form/form.html");
+          }
+    })
 }
 
-async function checkLoginData() {
-    const data = {"email-input": "guzami@at.me", "password-input":"0000"}
+async function checkLoginData(email, password) {
+    console.log(email, password);
     const headers = { "Content-Type": "application/json" };
     const init = {
         method: "POST",
         headers: headers,
-        body: JSON.stringify(data)
+        body: JSON.stringify({"email-input": email, "password-input": password})
       };
-  const res = await fetch("../../../backend/api/login/login_user.php", init);
-  const jsonRes = JSON.parse(res);
-  console.log(jsonRes);
-  return jsonRes;
+  return fetch("../../../backend/api/login/login-user.php", init).then(res => {
+    return res;
+  })
 }
