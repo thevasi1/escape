@@ -4,7 +4,7 @@ function login() {
 
     checkLoginData(email, password).then(message => {
         console.log(message);
-        if (message["status"] === "ERROR") {
+        if (message["status"] != "200") {
             throw new Error(message["message"]);
           }
           else {
@@ -22,6 +22,7 @@ async function checkLoginData(email, password) {
         body: JSON.stringify({"email-input": email, "password-input": password})
       };
   return fetch("../../../backend/api/login/login-user.php", init).then(res => {
-    return res;
+	  console.log(res);
+	  return res;
   })
 }
