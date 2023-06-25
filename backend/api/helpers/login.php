@@ -15,7 +15,7 @@ function login($user) {
         $stmt->execute(["email" => $user["email"]]);
     
         if ($stmt->rowCount() == 0) {
-            return ["status" => "ERROR", "message" => "В системата не съществува потребител с въведения имейл!", "code" => 400];
+            return ["status" => "ERROR", "message" => "No such user in the database!", "code" => 400];
         }
     
         $db_user = $stmt->fetch(PDO::FETCH_ASSOC);
