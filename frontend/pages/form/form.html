@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./form.css">
+</head>
+
+<body>
+    <div id="app" class="root" data-content="pages/home.html"></div>
+    <main>
+        <div class="container--tabs">
+            <section class="row">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-1">Tab 1</a></li>
+                    <li class=""><a href="#tab-2">Tab 2</a></li>
+                    <li class=""><a href="#tab-3">Tab 3</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <header>Escape rooms</header>
+                        <header>Choose one of the following escape rooms, to download the JSON file describing it
+                        </header>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </div>
+                    <div id="tab-2" class="tab-pane">
+                        <form class="flex flex-col">
+                            <div>
+                                <label for="roomName">Room Name:</label>
+                                <input type="text" id="roomName" name="roomName" required>
+                            </div>
+
+                            <div id="solutions">
+
+                            </div>
+                            <div class="room">
+                                <label for="content1Type">Content Type:</label>
+                                <input type="text" id="content1Type" name="content1Type" value="numeric" required>
+
+                                <label for="content1Solution">Content Solution:</label>
+                                <input type="text" id="content1Solution" name="content1Solution" value="1-2-3" required>
+
+                                <label for="content1Message">Content Message:</label>
+                                <input type="text" id="content1Message" name="content1Message"
+                                    value="...Nomer edno si ti" required>
+                            </div>
+
+                            <div class="room">
+                                <label for="content1Type">Content Type:</label>
+                                <input type="text" id="content1Type" name="content1Type" value="numeric" required>
+
+                                <label for="content1Solution">Content Solution:</label>
+                                <input type="text" id="content1Solution" name="content1Solution" value="1-2-3" required>
+
+                                <label for="content1Message">Content Message:</label>
+                                <input type="text" id="content1Message" name="content1Message"
+                                    value="...Nomer edno si ti" required>
+                            </div>
+
+                            <div>
+                                <label for="roomLang">Room Language:</label>
+                                <input type="text" id="roomLang" name="roomLang" value="en" required>
+                            </div>
+
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                    <div id="tab-3" class="tab-pane">
+                        <span class="glyphicon glyphicon-tint glyphicon--home--feature two columns text-center"></span>
+                        <span class="col-md-10">
+                            <h3>Feature 3</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        </span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script>
+        const arr = [1, 2, 3];
+        window.addEventListener("load", function () {
+            let myTabs = document.querySelectorAll("ul.nav-tabs > li");
+            function myTabClicks(tabClickEvent) {
+                for (let i = 0; i < myTabs.length; i++) {
+                    myTabs[i].classList.remove("active");
+                }
+                let clickedTab = tabClickEvent.currentTarget;
+                clickedTab.classList.add("active");
+                tabClickEvent.preventDefault();
+                let myContentPanes = document.querySelectorAll(".tab-pane");
+                for (i = 0; i < myContentPanes.length; i++) {
+                    myContentPanes[i].classList.remove("active");
+                }
+                let anchorReference = tabClickEvent.target;
+                let activePaneId = anchorReference.getAttribute("href");
+                let activePane = document.querySelector(activePaneId);
+                activePane.classList.add("active");
+            }
+            for (i = 0; i < myTabs.length; i++) {
+                myTabs[i].addEventListener("click", myTabClicks)
+            }
+            arr.forEach(element => {
+                const fruitList = document.getElementById("fruit");
+
+                // Add 3 new <li>'s to the list of fruits
+                fruitList.insertAdjacentHTML("beforeend", `
+                    <li>Pear</li>
+                    <li>Orange</li>
+                    <li>Grape</li>
+                `);
+            });
+        });
+    </script>
+</body>
+
+</html>
