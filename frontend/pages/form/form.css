@@ -1,23 +1,110 @@
-.container--tabs {
-	margin: 2rem;
+body {
+    height: 100vh;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #4bbe51;
+    background-image: linear-gradient(135deg, #4bbe51 50%, #265a3a 70%, #44ec84);
+}
+
+.big-header {
+    user-select: none;
+    font-size: 14em;
+    font-weight: 300;
+    padding: 0px 0 0 .4em;
+}
+
+.small-header {
+    user-select: none;
+    font-size: 10em;
+    font-weight: 300;
+}
+
+input.title {
+    height: fit-content;
+    width: 90%;
+    font-size: 12em;
+    font-weight: 100;
+    padding: 12px .4em;
+    margin: auto;
+    box-sizing: border-box;
+    border: none;
+    background-color: transparent;
+    border-bottom: .1em solid #e5fdab;
+}
+
+input.title, input.title:focus{
+    outline: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+main {
+    padding: 0 1.6em;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.form {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    padding: 1.2em 2em;
+    backdrop-filter: blur(10px);
+    border-radius: 2em;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    margin: 0.4em;
+}
+
+.fields-grow {
+    flex-grow: 8;
+}
+
+.submit-grow {
+    flex-grow: 1;
+}
+
+.submit-grow > input {
+    width: 100%;
+    border-radius: 2em;
+    height: fit-content;
+    padding: .8em;
+    font-size: 1.4em;
+    font-weight: 600;
+    background-image: linear-gradient(135deg, #ffc670, #f7ff8b, #ffffff);
+    border: none;
+    cursor: pointer;
 }
 
 .nav-tabs {
     float: left;
-    width: 100%;
     margin: 0;
     list-style-type: none;
-    border-bottom: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd; */
 }
 
-.nav-tabs > li {
+.nav-tabs>li {
     float: left;
     margin-bottom: -1px;
 }
 
-.nav-tabs > li.active > a,
-.nav-tabs > li.active > a:hover,
-.nav-tabs > li.active > a:focus {
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus {
     color: #555;
     cursor: default;
     background-color: #fff;
@@ -25,7 +112,7 @@
     border-bottom-color: transparent;
 }
 
-.nav-tabs > li > a {
+.nav-tabs>li>a {
     float: left;
     margin-right: 2px;
     line-height: 1.42857143;
@@ -35,7 +122,7 @@
 
 }
 
-.nav-tabs > li > a:hover {
+.nav-tabs>li>a:hover {
     border-color: #eee #eee #ddd;
 }
 
@@ -44,16 +131,16 @@
     width: 100%;
 }
 
-.tab-content > .tab-pane {
+.tab-content>.tab-pane {
     display: none;
 }
 
-.tab-content > .tab-pane.active {
+.tab-content>.tab-pane.active {
     display: block;
     padding: 2.5% 3.5%;
     background-color: #efefef;
 }
 
-.tab-content > .active {
+.tab-content>.active {
     display: block;
 }

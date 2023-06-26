@@ -10,23 +10,47 @@
 </head>
 
 <body>
-    <div id="app" class="root" data-content="pages/home.html"></div>
-    <main>
-        <div class="container--tabs">
-            <section class="row">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a href="#tab-1">Tab 1</a></li>
-                    <li class=""><a href="#tab-2">Tab 2</a></li>
-                    <li class=""><a href="#tab-3">Tab 3</a></li>
-                </ul>
-                <div class="tab-content">
+    <header class="flex flex-row">
+        <div class="flex flex-col">
+            <span class="small-header" for="roomName">Room</span>
+            <span class="big-header" for="roomName">name:</span>
+        </div>
+        <div class="flex flex-col justify-center">
+            <input class="title" type="text" id="roomName" name="roomName" required>
+        </div>
+    </header>
+    <main class="flex flex-row">
+        <section class="flex flex-col full-width">
+            <ul class="nav nav-tabs" id="tabs">
+                <li class="active"><a href="#tab-1">Tab 1</a></li>
+                <li class=""><a href="#tab-2">Tab 2</a></li>
+                <li class=""><a href="#tab-3">Tab 3</a></li>
+            </ul>
+            <div class="flex flex-row">
+                <div class="form fields-grow flex flex-col">
+                    <label for="content1Type">Content Type:</label>
+                    <input type="text" id="content1Type" name="content1Type" value="numeric" required>
+
+                    <label for="content1Solution">Content Solution:</label>
+                    <input type="text" id="content1Solution" name="content1Solution" value="1-2-3" required>
+
+                    <label for="content1Message">Content Message:</label>
+                    <input type="text" id="content1Message" name="content1Message" value="...Nomer edno si ti" required>
+                </div>
+                <div class="form submit-grow flex flex-col justify-center">
+                    <input type="submit" value="Submit">
+                </div>
+            </div>
+        </section>
+        <section class="">
+            <!-- <label for="roomLang">Room Language:</label> -->
+            <!-- <input type="text" id="roomLang" name="roomLang" value="en" required> -->
+        </section>
+        <!-- <div class="tab-content">
                     <div id="tab-1" class="tab-pane active">
                         <header>Escape rooms</header>
                         <header>Choose one of the following escape rooms, to download the JSON file describing it
                         </header>
-                        <ul>
-                            <li></li>
-                        </ul>
                     </div>
                     <div id="tab-2" class="tab-pane">
                         <form class="flex flex-col">
@@ -73,9 +97,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                         </span>
                     </div>
-                </div>
-            </section>
-        </div>
+                </div> -->
     </main>
 </body>
 
