@@ -35,9 +35,10 @@ window.addEventListener("load", function () {
 });
 
 function submit() {
+    console.log("aaaa");
     const message = {
         'room_name': 'lapa dundi',
-        'room_complexity': 69,
+        'room_complexity': 3,
         'tasks': [
             {
                 'type': 'numberic',
@@ -51,6 +52,7 @@ function submit() {
         headers: headers,
         body: JSON.stringify(message)
     };
+    console.log(init);
     return fetch("../../../backend/api/escape-room/add-room.php", init).then(res => {
         return res;
     })

@@ -7,7 +7,7 @@ function addRoom($room) {
         if(isset($_SESSION['user'])){
 
             $user = $_SESSION['user'];
-            $userid = $user['id'];
+            $user_id = $user['id'];
         }
         else {
 
@@ -18,10 +18,10 @@ function addRoom($room) {
     try {
 	$connection->beginTransaction();
 	$insert = "INSERT INTO room (name, lang, complexity, owner_id) VALUES
-  (:name, 'en', :complexity, 3)";
+  (:name, 'en', :complexity, :owner_id)";
     
         $stmt = $connection->prepare($insert);
-        $stmt->execute(["name" => $room["room_name"], "complexity" => $room["room_complexity"] ]);
+        $stmt->execute(["name" => $room["room_name"], "complexity" => $room["room_complexity"], "owner_id" => $user_id ]);
     
         if ($stmt->rowCount()  == 0) {
             return ["status" => "ERROR", "message" => $room["room_name"], "code" => 400];
