@@ -6,7 +6,7 @@ require_once("../helpers/validate_json.php");
 $data = file_get_contents("php://input");
 
 $user_data;
-if (strlen($data) > 0 && check_json($data)) {
+if (strlen($data) > 0 && is_valid_json($data)) {
     $user_data = json_decode($data, true);
 } else {
     http_response_code(400);
@@ -17,13 +17,7 @@ if (strlen($data) > 0 && check_json($data)) {
 $username = $user_data["username"];
 $email = $user_data["email-register"]; 
 $password = $user_data["password-register"]; 
-$repeated_password = $user_data["repeat_password"]; 
 $hashed_password = password_hash($password, PASSWORD_DEFAULT); // hash the input password
-
-if ($password != $repeated_password) {
-    http_response_code(400);
-    exit(json_encode(["status" => "ERROR", "message" => "The two passwords don't match!"]));
-}
 
 try {
     $db = new DB();
@@ -56,12 +50,12 @@ try {
         $user_id = $connection->lastInsertId(); 
 
         session_start();
-        $user = array("id" => $user_id, "username" => $firstname,"email" => $email, "password" => $hashed_password);
+        $user = array("id" => $user_id, "username" => $username,"email" => $email, "password" => $hashed_password);
         $_SESSION["user"] = $user;
 
         setcookie("email", $email, time() + 900);
         setcookie("password", $password, time() + 900);
-        }
+        
 
         http_response_code(200);
         exit(json_encode(["status" => "SUCCESS", "message" => "Registration is successful!"]));
@@ -69,7 +63,7 @@ try {
     else {
         http_response_code(500);
         exit(json_encode(["status" => "ERROR", "message" => "Server error!"]));
-    }
+    } 
 } catch (PDOException $e) {
     http_response_code(500);
     exit(json_encode(["status" => "ERROR", "message" => "Server error!"]));
