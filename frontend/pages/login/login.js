@@ -29,7 +29,7 @@ function register() {
     const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
 
-    checkLoginData(username, email, password).then(message => {
+    checkRegisterData(username, email, password).then(message => {
         if (message["status"] != "200") {
             throw new Error(message["message"]);
           }
@@ -39,7 +39,7 @@ function register() {
     })
 }
 
-function checkLoginData(username, email, password) {
+function checkRegisterData(username, email, password) {
     const headers = { "Content-Type": "application/json" };
     const init = {
         method: "POST",
