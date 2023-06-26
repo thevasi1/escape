@@ -10,7 +10,7 @@ if (strlen($data) > 0 && is_valid_json($data)) {
     $user_data = json_decode($data, true);
 } else {
     http_response_code(400);
-    exit(json_encode(["status" => "ERROR", "message" => "The input is not a correct JSON!"]));
+    exit(json_encode(["status" => "ERROR", "message" => $data ]));
 }
 
 
@@ -40,15 +40,16 @@ try {
 }
 
 try {
-    $insert = "INSERT INTO users (username, email, password)
-                      VALUES (:username, :email, :password)";
+    $insert = "INSERT INTO users (username, email, password_hash)
+                      VALUES (:username, :email, :password_hash)";
 
     $stmt = $connection->prepare($insert);
     
-    if ($stmt->execute(["username" => $username, "email" => $email, "password" => $hashed_password])) {
+
+    if ($stmt->execute(["username" => $username, "email" => $email, "password_hash" => $hashed_password])) {
         
         $user_id = $connection->lastInsertId(); 
-
+    
         session_start();
         $user = array("id" => $user_id, "username" => $username,"email" => $email, "password" => $hashed_password);
         $_SESSION["user"] = $user;
@@ -66,7 +67,7 @@ try {
     } 
 } catch (PDOException $e) {
     http_response_code(500);
-    exit(json_encode(["status" => "ERROR", "message" => "Server error!"]));
+    exit(json_encode(["status" => "ERROR", "message" => $e ]));
 }
 
 ?>
