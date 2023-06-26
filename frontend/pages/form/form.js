@@ -1,6 +1,6 @@
 const arr = [1, 2, 3];
 window.addEventListener("load", function () {
-    const tabs =  this.document.getElementById('tabs');
+    const tabs = this.document.getElementById('tabs');
     arr.forEach((item, i) => {
         const newItem = document.createElement('li');
         const newAnchor = document.createElement('a');
@@ -33,3 +33,25 @@ window.addEventListener("load", function () {
         myTabs[i].addEventListener("click", myTabClicks)
     }
 });
+
+function submit() {
+    const message = {
+        'room_name': 'lapa dundi',
+        'room_complexity': 69,
+        'tasks': [
+            {
+                'type': 'numberic',
+                'solution': '6-9'
+            }
+        ]
+    };
+    const headers = { "Content-Type": "application/json" };
+    const init = {
+        method: "POST",
+        headers: headers,
+        body: JSON.stringify(message)
+    };
+    return fetch("../../../backend/api/escape-room/add-room.php", init).then(res => {
+        return res;
+    })
+}
