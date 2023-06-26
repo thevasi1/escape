@@ -14,14 +14,14 @@ else {
     exit(json_encode(["status" => "ERROR", "message" => "The json is in invalid format!"]));
 }
 
-$room_id = $room_data["room_id"];
+//$room_id = $room_data["room_id"];
 $room_name = $room_data["room_name"];
-$room_lang = $room_data["room_lang"];
+//$room_lang = $room_data["room_lang"];
 $room_complexity = $room_data["room_complexity"];
 $tasks = $room_data["tasks"];
-$room = ["room_id" => $room_id, "room_name" => $room_name, "room_lang" => $room_lang, "room_complexity" => $room_complexity, "tasks" => $tasks];
+$room = ["room_name" => $room_name, "room_complexity" => $room_complexity, "tasks" => $tasks];
 
-$response = addRoom($user);
+$response = addRoom($room);
 
 http_response_code($response["code"]);
 exit(json_encode(["status" => $response["status"], "message" => $response["message"]]));

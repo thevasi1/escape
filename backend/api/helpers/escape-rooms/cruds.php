@@ -1,20 +1,30 @@
 <?php 
 
-require_once("../../../db/db_connection.php");
+require("C:/xampp/htdocs/escape-rooms/backend/db/db_connection.php");
 
 function addRoom($room) {
+        session_start();
+        if(isset($_SESSION['user'])){
+
+            $user = $_SESSION['user'];
+            $userid = $user['id'];
+        }
+        else {
+
+            return ["status" => "ERROR", "message" => "User not logged in", "code" => 401];
+        }
         $db = new DB();
         $connection = $db->getConnection();
     try {
 	$connection->beginTransaction();
-	$insert = "INSERT IGNORE INTO room (name, lang, complexity, owner_id) VALUES
-  (:name, :lang, :complexity, :owner_id )";
+	$insert = "INSERT INTO room (name, lang, complexity, owner_id) VALUES
+  (:name, 'en', :complexity, 3)";
     
         $stmt = $connection->prepare($insert);
-        $stmt->execute(["name" => $room["name"], "lang" => $room["lang"], "complexity" => $room["complexity"], "owner_id" => $room["owner_id"]);
+        $stmt->execute(["name" => $room["room_name"], "complexity" => $room["room_complexity"] ]);
     
-        if ($stmt->affected_rows  > 0) {
-            return ["status" => "ERROR", "message" => "Can't create room!", "code" => 400];
+        if ($stmt->rowCount()  == 0) {
+            return ["status" => "ERROR", "message" => $room["room_name"], "code" => 400];
 	  }
 
 	$roomId = $connection->lastInsertId();
@@ -24,8 +34,8 @@ function addRoom($room) {
 
 	foreach($tasks as $task) {
 		$type = $task["type"];
-		$solution = $task["solution"]
-		$mssg = $task["mssg"]
+		$solution = $task["solution"];
+		$mssg = $task["mssg"];
 
 		$stmt->execute(["room_id" => $roomId, "type" => $type, "solution" => $solution, "mssg" => $mssg]);
 	}
@@ -34,7 +44,7 @@ function addRoom($room) {
     } 
     catch (PDOException $e) {
 	$connection->rollback();
-        return ["status" => "ERROR", "message" => "Couldn't add room!", "code" => 500];
+        return ["status" => "ERROR", "message" => $e, "code" => 500];
     }
 
     return ["status" => "SUCCESS", "message" => "Success!", "code" => 200];

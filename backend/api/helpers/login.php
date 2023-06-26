@@ -7,7 +7,7 @@ function login($user) {
         $db = new DB();
         $connection = $db->getConnection();
         
-        $select = "SELECT id, password 
+        $select = "SELECT id, password_hash 
                     FROM users 
                     WHERE email = :email";
     
@@ -20,12 +20,12 @@ function login($user) {
     
         $db_user = $stmt->fetch(PDO::FETCH_ASSOC);
     
-        if (!password_verify($user["password"], $db_user["password"])) {
+        if (!password_verify($user["password"], $db_user["password_hash"])) {
             return ["status" => "ERROR", "message" => "Паролата, която сте въвели е грешна!", "code" => 400];
         }
     } 
     catch (PDOException $e) {
-        return ["status" => "ERROR", "message" => "Моля да ни извините, настъпи грешка в сървъра!", "code" => 500];
+        return ["status" => "ERROR", "message" => $e, "code" => 500];
     }
 
     session_start();
