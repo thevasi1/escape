@@ -10,6 +10,7 @@ body {
     user-select: none;
     font-size: 14em;
     font-weight: 300;
+    line-height: 1.2em;
     padding: 0px 0 0 .4em;
 }
 
@@ -17,6 +18,7 @@ body {
     user-select: none;
     font-size: 10em;
     font-weight: 300;
+    line-height: 1em;
 }
 
 input.title {
@@ -54,6 +56,7 @@ input.title, input.title:focus{
 
 main {
     padding: 0 1.6em;
+    margin-top: 1.6em;
 }
 
 .full-width {
@@ -72,6 +75,17 @@ main {
 
 .fields-grow {
     flex-grow: 8;
+}
+
+.fields > input,
+.fields > select  {
+    padding: 0.8em 1.8em;
+    border-radius: 2em;
+    border: none;
+    font-size: 1.2em;
+    width: 60%;
+    margin: .5em auto;
+    box-sizing: border-box;
 }
 
 .submit-grow {

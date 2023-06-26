@@ -22,20 +22,18 @@
     <main class="flex flex-row">
         <section class="flex flex-col full-width">
             <ul class="nav nav-tabs" id="tabs">
-                <li class="active"><a href="#tab-1">Tab 1</a></li>
-                <li class=""><a href="#tab-2">Tab 2</a></li>
-                <li class=""><a href="#tab-3">Tab 3</a></li>
+                <li onclick="newRoom()"><a>+</a></li>
             </ul>
             <div class="flex flex-row">
-                <div class="form fields-grow flex flex-col">
-                    <label for="content1Type">Content Type:</label>
-                    <input type="text" id="content1Type" name="content1Type" value="numeric" required>
-
-                    <label for="content1Solution">Content Solution:</label>
-                    <input type="text" id="content1Solution" name="content1Solution" value="1-2-3" required>
-
-                    <label for="content1Message">Content Message:</label>
-                    <input type="text" id="content1Message" name="content1Message" value="...Nomer edno si ti" required>
+                <div class="form fields fields-grow flex flex-col">
+                    <select name="Type" placeholder="Type" id="contentType" required>
+                        <option value="numeric">Numeric</option>
+                        <option value="shape">Shape</option>
+                        <option value="text">Text</option>
+                        <option value="direction">Directions</option>
+                      </select>
+                    <input type="text" id="contentSolution" placeholder="Solution" name="Solution" value="" required>
+                    <input type="text" id="contentMessage" placeholder="Message" name="Message" value="" required>
                 </div>
                 <div class="form submit-grow flex flex-col justify-center">
                     <input type="submit" onclick="submit()" value="Submit">
