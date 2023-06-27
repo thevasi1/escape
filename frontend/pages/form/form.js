@@ -5,22 +5,22 @@ const obj = {
         {
             type: 'numeric',
             solution: '6-9',
-            message: 'qj mi guza'
+            message: 'test-1'
         },
         {
             type: 'text',
             solution: '4-2-0',
-            message: 'nqma ti qm guza'
+            message: 'test-2'
         },
         {
             type: 'direction',
             solution: '9-6',
-            message: 'ma moa probvam'
+            message: 'test-3'
         },
         {
             type: 'shape',
             solution: '9-6-0',
-            message: 'zaaaebi'
+            message: 'test-4'
         }
     ]
 }
@@ -100,7 +100,6 @@ function newRoom() {
 }
 
 function submit() {
-    console.log("aaaa");
     const message = {
         'room_name': 'lapa dundi',
         'room_complexity': 3,
@@ -108,7 +107,7 @@ function submit() {
             {
                 type: 'numberic',
                 solution: '6-9',
-                message: 'qj mi guza'
+                message: 'test message'
             }
         ]
     };
