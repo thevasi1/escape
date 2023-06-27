@@ -1,0 +1,36 @@
+[
+    {
+        "id": 1,
+        "email": "ivan_petrov@abv.bg",
+        "username": "ipetrov",
+        "password_hash": "hash1"
+    },
+
+    {
+        "id": 2,
+        "email": "n_iliev16@abv.bg",
+        "username": "niliev",
+        "password_hash": "hash2"
+    },
+
+    {
+        "id": 3,
+        "email": "g_georgiev@gmail.com",
+        "username": "georgiev22",
+        "password_hash": "hash3"
+    },
+
+    {
+        "id": 4,
+        "email": "stefan_stefanov@abv.bg",
+        "username": "stefanov16",
+        "password_hash": "hash4"
+    },
+
+    {
+        "id": 5,
+        "email": "yavor_dimitrov@abv.bg",
+        "username": "yavor77",
+        "password_hash": "hash5"
+    }
+]

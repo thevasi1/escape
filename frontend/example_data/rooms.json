@@ -1,0 +1,154 @@
+[
+    {
+        "id": 1,
+	    "name": "Jungle",
+        "lang":"en",
+        "complexity": 3,
+	    "content": 
+            [
+			    {
+                    "id": 1,
+                    "room_id": 1,
+				    "type": "numeric",
+				    "solution": "1-2-3",
+				    "mssg": "Look at the map"
+			    },
+
+                {   
+				    "id": 2,
+                    "room_id": 1,
+				    "type": "color",
+				    "solution": "R-W-B",
+				    "mssg":"Look at the logo of the crashed airplane"
+			    } 
+            ],
+        "owner_id": 1
+    },
+
+    {
+        "id": 2,
+	    "name": "Subway",
+        "lang":"en",
+        "complexity": 4,
+	    "content": 
+            [
+			    {
+                    "id": 3,
+                    "room_id": 2,
+				    "type": "color",
+				    "solution": "R-G-B",
+				    "mssg": "Look at the graffiti"
+			    },
+
+                {   
+				    "id": 4,
+                    "room_id": 2,
+				    "type": "text",
+				    "solution": "A-B-C",
+				    "mssg":"Look at the advertising"
+			    },
+
+                {   
+				    "id": 5,
+                    "room_id": 2,
+				    "type": "numeric",
+				    "solution": "1-4-2",
+				    "mssg":"Look at the schedule"
+			    } 
+        ],
+        "owner_id": 1
+
+    },
+
+    {
+        "id": 3,
+	    "name": "Spaceship",
+        "lang":"en",
+        "complexity": 5,
+	    "content": 
+            [
+			    {
+                    "id": 6,
+                    "room_id": 3,
+				    "type": "color",
+				    "solution": "B-G-B",
+				    "mssg": "Look at the buttons"
+			    },
+
+                {   
+				    "id": 7,
+                    "room_id": 3,
+				    "type": "numeric",
+				    "solution": "0-2-3",
+				    "mssg":"Look at the oxygen bottle percentage"
+			    },
+
+                {   
+				    "id": 8,
+                    "room_id": 3,
+				    "type": "color",
+				    "solution": "B-W-B",
+				    "mssg":"Look at the space suits"
+			    } 
+        ],
+        "owner_id": 2
+
+    },
+
+    {
+        "id": 4,
+	    "name": "Battlefront",
+        "lang":"en",
+        "complexity": 3,
+	    "content": 
+            [
+			    {
+                    "id": 9,
+                    "room_id": 4,
+				    "type": "numeric",
+				    "solution": "7-2-3",
+				    "mssg": "Look at the truck's plate"
+			    },
+
+                {   
+				    "id": 10,
+                    "room_id": 4,
+				    "type": "text",
+				    "solution": "U-S-A",
+				    "mssg":"Look at the soldier's badge"
+			    }
+
+        ],
+        "owner_id": 3
+
+    },
+
+    {
+        "id": 5,
+	    "name": "Submarine",
+        "lang":"en",
+        "complexity": 2,
+	    "content": 
+            [
+			    {
+                    "id": 11,
+                    "room_id": 5,
+				    "type": "color",
+				    "solution": "Y-B-Y",
+				    "mssg": "Look at the fishes"
+			    },
+
+                {   
+				    "id": 12,
+                    "room_id": 5,
+				    "type": "text",
+				    "solution": "S-O-S",
+				    "mssg":"Look at the incoming ship"
+			    }
+
+        ],
+    "owner_id": 4
+
+    }
+
+]
