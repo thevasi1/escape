@@ -77,8 +77,10 @@ main {
     flex-grow: 8;
 }
 
-.fields > input,
-.fields > select  {
+#fields > input,
+#fields > button,
+#fields > select,
+.submit-grow > #complexity  {
     padding: 0.8em 1.8em;
     border-radius: 2em;
     border: none;
@@ -88,11 +90,19 @@ main {
     box-sizing: border-box;
 }
 
+#fields > button {
+    background-color: #ff8d78cb;
+}
+
+#fields > button:hover {
+    background-color: #fcbdb4;
+}
+
 .submit-grow {
     flex-grow: 1;
 }
 
-.submit-grow > input {
+.submit-grow > #submit {
     width: 100%;
     border-radius: 2em;
     height: fit-content;
@@ -156,5 +166,13 @@ main {
 }
 
 .tab-content>.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+.not-hidden {
     display: block;
 }

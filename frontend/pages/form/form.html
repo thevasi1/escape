@@ -22,80 +22,31 @@
     <main class="flex flex-row">
         <section class="flex flex-col full-width">
             <ul class="nav nav-tabs" id="tabs">
-                <li onclick="newRoom()"><a>+</a></li>
+                <li onclick="newKey()"><a>+</a></li>
             </ul>
             <div class="flex flex-row">
-                <div class="form fields fields-grow flex flex-col">
+                <div class="form fields-grow hidden" id="no-content">CONTENT HERE IS HIDDENT</div>
+                <div class="form fields-grow flex flex-col" id="fields">
                     <select name="Type" placeholder="Type" id="contentType" required>
                         <option value="numeric">Numeric</option>
                         <option value="shape">Shape</option>
                         <option value="text">Text</option>
                         <option value="direction">Directions</option>
-                      </select>
+                    </select>
                     <input type="text" id="contentSolution" placeholder="Solution" name="Solution" value="" required>
                     <input type="text" id="contentMessage" placeholder="Message" name="Message" value="" required>
+                    <button onclick="removeCurrent()">remove</button>
                 </div>
                 <div class="form submit-grow flex flex-col justify-center">
-                    <input type="submit" onclick="submit()" value="Submit">
+                    <!-- uncomment for complexity -->
+                    <!-- <label for="roomLang">Room complexity:</label> -->
+                    <!-- <input type="number" id="complexity" min="1" max="10"> -->
+                    <input type="submit" id="submit" onclick="submit()" value="Submit">
                 </div>
             </div>
         </section>
         <section class="">
-            <!-- <label for="roomLang">Room Language:</label> -->
-            <!-- <input type="text" id="roomLang" name="roomLang" value="en" required> -->
         </section>
-        <!-- <div class="tab-content">
-                    <div id="tab-1" class="tab-pane active">
-                        <header>Escape rooms</header>
-                        <header>Choose one of the following escape rooms, to download the JSON file describing it
-                        </header>
-                    </div>
-                    <div id="tab-2" class="tab-pane">
-                        <form class="flex flex-col">
-                            <div>
-                                <label for="roomName">Room Name:</label>
-                                <input type="text" id="roomName" name="roomName" required>
-                            </div>
-                            <div class="room">
-                                <label for="content1Type">Content Type:</label>
-                                <input type="text" id="content1Type" name="content1Type" value="numeric" required>
-
-                                <label for="content1Solution">Content Solution:</label>
-                                <input type="text" id="content1Solution" name="content1Solution" value="1-2-3" required>
-
-                                <label for="content1Message">Content Message:</label>
-                                <input type="text" id="content1Message" name="content1Message"
-                                    value="...Nomer edno si ti" required>
-                            </div>
-
-                            <div class="room">
-                                <label for="content1Type">Content Type:</label>
-                                <input type="text" id="content1Type" name="content1Type" value="numeric" required>
-
-                                <label for="content1Solution">Content Solution:</label>
-                                <input type="text" id="content1Solution" name="content1Solution" value="1-2-3" required>
-
-                                <label for="content1Message">Content Message:</label>
-                                <input type="text" id="content1Message" name="content1Message"
-                                    value="...Nomer edno si ti" required>
-                            </div>
-
-                            <div>
-                                <label for="roomLang">Room Language:</label>
-                                <input type="text" id="roomLang" name="roomLang" value="en" required>
-                            </div>
-
-                            <input type="submit" value="Submit">
-                        </form>
-                    </div>
-                    <div id="tab-3" class="tab-pane">
-                        <span class="glyphicon glyphicon-tint glyphicon--home--feature two columns text-center"></span>
-                        <span class="col-md-10">
-                            <h3>Feature 3</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </span>
-                    </div>
-                </div> -->
     </main>
 </body>
 

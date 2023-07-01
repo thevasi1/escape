@@ -1,63 +1,60 @@
-const arr = [1, 2, 3];
 let lastRoomIndex = -1;
-const obj = {
-    tasks: [
-        {
-            type: 'numeric',
-            solution: '6-9',
-            message: 'test-1'
-        },
-        {
-            type: 'text',
-            solution: '4-2-0',
-            message: 'test-2'
-        },
-        {
-            type: 'direction',
-            solution: '9-6',
-            message: 'test-3'
-        },
-        {
-            type: 'shape',
-            solution: '9-6-0',
-            message: 'test-4'
-        }
-    ]
-}
-window.addEventListener("load", function () {
-    const tabs = this.document.getElementById('tabs');
-    obj.tasks.forEach((item, i) => addRoom(item, i));
-    const myTabs = document.querySelectorAll("ul.nav-tabs > li");
+const roomTasks = [];
 
-    function myTabClicks(tabClickEvent) {
-        for (let i = 0; i < myTabs.length; i++) {
-            myTabs[i].classList.remove("active");
-        }
-        let clickedTab = tabClickEvent.currentTarget;
-        clickedTab.classList.add("active");
-        tabClickEvent.preventDefault();
+window.addEventListener("load", function () {
+    if (roomTasks.length === 0) {
+        showEmptyForm();
+        return;
     }
+    roomTasks.forEach((item, i) => addKey(item, i));
+    const myTabs = document.querySelectorAll("ul.nav-tabs > li");
 
     for (i = 0; i < myTabs.length; i++) {
         myTabs[i].addEventListener("click", myTabClicks)
     }
-
-    function addRoom(room, index) {
-        console.log(room);
-        const newItem = document.createElement('li');
-
-        const newAnchor = document.createElement('a');
-        newAnchor.textContent = `Escape ${index + 1}`;
-
-        newAnchor.setAttribute('href', `#tab-${index + 1}`);
-        newAnchor.setAttribute('data-key', index);
-
-        newItem.appendChild(newAnchor);
-
-        tabs.prepend(newItem);
-        newItem.addEventListener('click', clickRoom);
-    }
 });
+
+function showEmptyForm() {
+    const emptyForm = this.document.getElementById('no-content');
+    emptyForm.classList.remove('hidden');
+
+    const inputForm = this.document.getElementById('fields');
+    inputForm.classList.add('hidden');
+}
+
+function showInputFields() {
+    const emptyForm = this.document.getElementById('no-content');
+    emptyForm.classList.add('hidden');
+
+    const inputForm = this.document.getElementById('fields');
+    inputForm.classList.remove('hidden');
+}
+
+function addKey(room, index) {
+    const tabs = this.document.getElementById('tabs');
+    const newItem = document.createElement('li');
+
+    const newAnchor = document.createElement('a');
+    newAnchor.textContent = `Escape ${index + 1}`;
+
+    newAnchor.setAttribute('href', `#tab-${index + 1}`);
+    newAnchor.setAttribute('data-key', index);
+
+    newItem.appendChild(newAnchor);
+
+    tabs.prepend(newItem);
+    newItem.addEventListener('click', clickRoom);
+}
+
+function myTabClicks(tabClickEvent) {
+    tabClickEvent.preventDefault();
+    for (let i = 0; i < myTabs.length; i++) {
+        myTabs[i].classList.remove("active");
+    }
+
+    const clickedTab = tabClickEvent.currentTarget;
+    clickedTab.classList.add("active");
+}
 
 function clickRoom(event) {
     const key = event.target.dataset.key;
@@ -65,51 +62,83 @@ function clickRoom(event) {
 }
 
 function loadParameters(index) {
+    if (roomTasks.length === 0) {
+        return;
+    }
+
     const type = document.getElementById('contentType');
     const solution = document.getElementById('contentSolution'); 
     const message = document.getElementById('contentMessage');
 
     if (lastRoomIndex != -1) {
-        obj.tasks[lastRoomIndex].type = type.value;
-        obj.tasks[lastRoomIndex].solution = solution.value;
-        obj.tasks[lastRoomIndex].message = message.value;
+        roomTasks[lastRoomIndex].type = type.value;
+        roomTasks[lastRoomIndex].solution = solution.value;
+        roomTasks[lastRoomIndex].message = message.value;
     }
 
-    type.value = obj.tasks[index].type;
-    solution.value = obj.tasks[index].solution;
-    message.value = obj.tasks[index].message;
+    type.value = roomTasks[index].type;
+    solution.value = roomTasks[index].solution;
+    message.value = roomTasks[index].message;
     
     lastRoomIndex = index;
 }
 
-function newRoom() {
+function newKey() {
+    const newIndex = roomTasks.length;
     const tabs = this.document.getElementById('tabs');
     const newItem = document.createElement('li');
 
     const newAnchor = document.createElement('a');
-    newAnchor.textContent = `Escape ${obj.tasks.length + 1}`;
+    newAnchor.textContent = `Escape ${newIndex + 1}`;
 
-    newAnchor.setAttribute('href', `#tab-${obj.tasks.length + 1}`);
-    newAnchor.setAttribute('data-key', obj.tasks.length);
+    newAnchor.setAttribute('href', `#tab-${newIndex + 1}`);
+    newAnchor.setAttribute('data-key', newIndex);
 
     newItem.appendChild(newAnchor);
 
     tabs.prepend(newItem);
     newItem.addEventListener('click', clickRoom);
-    obj.tasks.push({});
+
+    roomTasks.push({type: 'numeric', solution: '', message: ''});
+
+    showInputFields();
+    loadParameters(newIndex);
+}
+
+function removeCurrent() {
+    const FIRST_ELEMENT = 0;
+    roomTasks.splice(lastRoomIndex, 1);
+
+    const roomKeyToBeRemoved = document.querySelector(`[data-key="${roomTasks.length}"]`);
+    roomKeyToBeRemoved.parentElement.remove();
+
+    lastRoomIndex = -1;
+    loadParameters(FIRST_ELEMENT)
+
+    if (roomTasks.length === 0) {
+        showEmptyForm();
+    }
+}
+
+function getTitle() {
+    const roomName = document.getElementById('roomName');
+    return roomName.value;
 }
 
 function submit() {
+    if (roomTasks.length === 0) {
+        return;
+    }
+
+    const FIRST_ELEMENT = 0;
+    loadParameters(FIRST_ELEMENT);
+
+    const title = getTitle();
     const message = {
-        'room_name': 'lapa dundi',
+        'room_name': title,
+        //todo: ADD complexity
         'room_complexity': 3,
-        'tasks': [
-            {
-                type: 'numberic',
-                solution: '6-9',
-                message: 'test message'
-            }
-        ]
+        'tasks': roomTasks
     };
     const headers = { "Content-Type": "application/json" };
     const init = {
@@ -117,7 +146,6 @@ function submit() {
         headers: headers,
         body: JSON.stringify(message)
     };
-    console.log(init);
     return fetch("../../../backend/api/escape-room/add-room.php", init).then(res => {
         return res;
     })
