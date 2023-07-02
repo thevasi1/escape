@@ -125,6 +125,15 @@ function getTitle() {
     return roomName.value;
 }
 
+function goToOverview() {
+    window.location.replace("../overview/overview.html");
+}
+
+function logout() {
+    // TODO: add logout func here
+    window.location.replace("../login/login.html");
+}
+
 function submit() {
     if (roomTasks.length === 0) {
         return;

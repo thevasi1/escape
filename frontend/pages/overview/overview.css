@@ -1,8 +1,96 @@
 body {
-    background-color: #212223;
-    background-image: radial-gradient(circle, transparent 1rem, #212223 1rem),
-      linear-gradient(-45deg, #165004 0.5rem, transparent 0.5rem),
-      linear-gradient(135deg, #165004 0.5rem, transparent 0.5rem);
-    background-size: 5em 5em;
-    background-position: 5.25rem 5.25rem, 2.5rem 2.5rem, 2.5rem 2.5rem;
-  }
+  background-color: #212223;
+  background-image: radial-gradient(circle, transparent 1rem, #212223 1rem),
+    linear-gradient(-45deg, #165004 0.5rem, transparent 0.5rem),
+    linear-gradient(135deg, #165004 0.5rem, transparent 0.5rem);
+  background-size: 5em 5em;
+  background-position: 5.25rem 5.25rem, 2.5rem 2.5rem, 2.5rem 2.5rem;
+}
+
+body > header {
+  font-size: 3.5em;
+  color: #212223;
+  padding: .8em;
+  border-radius: .2em;
+  background: linear-gradient(35deg, #ffffffee 0.5em, transparent 12em);
+}
+
+main {
+  width: 80vw;
+  padding: 1em 2.8em 2.8em;
+  margin: 4em auto 0;
+  background-color: #cbf1bf9d;
+  border-radius: .2em;
+  display: flex;
+  flex-direction: column;
+}
+
+#add-row {
+  background-color: #f9fff7;
+  padding: 1.8em;
+  border-radius: .5em;
+  border: none;
+  text-align: center;
+}
+
+#add-row > button {
+  padding: .8em 1.6em;
+  margin-left: 1em;
+  border-radius: 2em;
+  height: fit-content;
+  font-size: 1em;
+  font-weight: 600;
+  background-color: #165004;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#add-row > button:hover {
+  background-color: #cbf1bf;
+  color: #212223;
+}
+
+.row {
+  padding: 1.8em;
+  margin-top: 1.5em;
+  background-color: #f9fff7;
+  border-radius: .5em;
+  border: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.row > header {
+  line-height: 2.2em;
+}
+
+.buttons > button {
+  padding: .6em 1.8em;
+  margin: 0 1em;
+  border-radius: 2em;
+  font-size: .9em;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#export {
+  background-color: #064975;
+}
+
+#edit {
+  background-color: #8d4400;
+}
+
+#delete {
+  background-color: #610202;
+}
+
+#export:hover,
+#edit:hover,
+#delete:hover {
+  background-color: #dcf1d2;
+  color: #212223;
+}
