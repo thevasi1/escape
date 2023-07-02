@@ -25,7 +25,7 @@
                 <li onclick="newKey()"><a>+</a></li>
             </ul>
             <div class="flex flex-row">
-                <div class="form fields-grow hidden" id="no-content">CONTENT HERE IS HIDDENT</div>
+                <div class="form fields-grow hidden" id="no-content">Currently there are no keys for this room, to add one, press the '+' button above</div>
                 <div class="form fields-grow flex flex-col" id="fields">
                     <select name="Type" placeholder="Type" id="contentType" required>
                         <option value="numeric">Numeric</option>
@@ -35,7 +35,7 @@
                     </select>
                     <input type="text" id="contentSolution" placeholder="Solution" name="Solution" value="" required>
                     <input type="text" id="contentMessage" placeholder="Message" name="Message" value="" required>
-                    <button onclick="removeCurrent()">remove</button>
+                    <button onclick="removeCurrent()">Remove</button>
                 </div>
                 <div class="form submit-grow flex flex-col justify-center">
                     <!-- uncomment for complexity -->
