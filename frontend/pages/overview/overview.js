@@ -1,24 +1,27 @@
 const rooms = [1,2,3,4,5,6,7,8];
 
-window.addEventListener("load", function () {
-    //TODO: add function to get all rooms
-    rooms.forEach((item, i) => insertRoomRow(item, i));
+window.addEventListener("load", async function () {
+    const headers = { "Content-Type": "application/json" };
+    const init = { method: "GET", headers: headers };
+    const res = await fetch("../../../backend/api/escape-room/get-all-rooms.php", init);
+    const json = await res.json();
+    const newRooms = JSON.parse(json.message);
+    newRooms.forEach(item => insertRoomRow(item));
 });
 
-function insertRoomRow(room, index) {
+function insertRoomRow(room) {
     const rows = this.document.getElementById('rows');
 
     const newRoomRow = document.createElement('section');
     newRoomRow.classList.add("row");
 
     const newRoomHeader = document.createElement('header');
-    //TODO: get this from the object
-    const newRoomTitle = 'asdasdasd';
+    const newRoomTitle = room.name;
     newRoomHeader.textContent = newRoomTitle;
 
     const buttonsDiv = document.createElement('div');
     buttonsDiv.classList.add('buttons');
-    buttonsDiv.setAttribute('data-key', index);
+    buttonsDiv.setAttribute('data-key', room.id);
 
     const exportButton = document.createElement('button');
     exportButton.classList.add("export");
@@ -59,8 +62,12 @@ function editRoom() {
     console.log('edit');
 }
 
-function deleteRoom() {
-    console.log('delete');
+async function deleteRoom(event) {
+    const key = event.target.parentElement.dataset.key;
+    console.log('delete ', key);
+    const headers = { "Content-Type": "application/json" };
+    const init = { method: "DELETE", headers: headers };
+    const res = await fetch("../../../backend/api/escape-room/delete-room.php", init);
 }
 
 function logout() {

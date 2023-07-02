@@ -34,7 +34,7 @@ function register() {
             throw new Error(message["message"]);
           }
           else {
-            window.location.replace("../form/form.html");
+            window.location.replace("../overview/overview.html");
           }
     })
 }

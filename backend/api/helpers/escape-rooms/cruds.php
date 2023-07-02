@@ -1,6 +1,7 @@
 <?php 
 
-require("C:/xampp/htdocs/escape-rooms/backend/db/db_connection.php");
+//TODO: change this to relative path
+require_once('C:uni\web\htdocs\escape-rooms\backend\db\db_connection.php');
 
 function addRoom($room) {
         session_start();
@@ -80,22 +81,19 @@ function getAllRooms() {
         $connection = $db->getConnection();
     try {
         $connection->beginTransaction();
-        $select = "SELECT * FROM room";
+        $select = "SELECT * FROM `room`";
 
         $stmt = $connection->prepare($select);
         $stmt->execute();
-    	$rooms = $stmt->fetch(PDO::FETCH_BOTH); 
+    	$rooms = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 
-    	return ["status" => "SUCCESS", "message" => json_encode($rooms), "code" => 200];
         $connection->commit();
+    	return ["status" => "SUCCESS", "message" => json_encode($rooms), "code" => 200];
     }
     catch (PDOException $e) {
         $connection->rollback();
         return ["status" => "ERROR", "message" => "Couldn't fetch all rooms!", "code" => 500];
     }
-
-    return ["status" => "SUCCESS", "message" => "Success!", "code" => 200];
-
 }
 
 function getRoom($room_id) {
