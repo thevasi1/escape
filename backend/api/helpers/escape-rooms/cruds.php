@@ -1,7 +1,7 @@
 <?php 
 
 //TODO: change this to relative path
-require_once('C:uni\web\htdocs\escape-rooms\backend\db\db_connection.php');
+require_once('C:\uni\web\htdocs\escape-rooms\backend\db\db_connection.php');
 
 function addRoom($room) {
         session_start();
