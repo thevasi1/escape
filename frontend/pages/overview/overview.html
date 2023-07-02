@@ -13,20 +13,17 @@
         Rooms Overview
     </header>   
 
-    <main class="container">
+    <main class="container" id="main-container">
         <section id="add-row">
             <span>This is the place to view, update and add Escape Rooms</span>
             <button onclick="createRoom()">Add Room</button>
         </section>
-        <section class="row">
-            <header>BRUUUUUUUUUUUUUH</header>
-            <div class="buttons">
-                <button id="export">Export</button>
-                <button id="edit">Edit</button>
-                <button id="delete">Delete</button>
-            </div>
+        <section id="rows">
         </section>
     </main>
+    <div id="navigation">
+        <button onclick="logout()">Logout</button>
+    </div>
 </body>
 
 </html>

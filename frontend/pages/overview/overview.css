@@ -31,6 +31,8 @@ main {
   border-radius: .5em;
   border: none;
   text-align: center;
+  z-index: 1;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
 }
 
 #add-row > button {
@@ -51,14 +53,19 @@ main {
   color: #212223;
 }
 
+#rows {
+  height: 55vh;
+  overflow: auto;
+}
+
 .row {
-  padding: 1.8em;
+  padding: 1.8em 18em;
   margin-top: 1.5em;
   background-color: #f9fff7;
   border-radius: .5em;
   border: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .row > header {
@@ -76,21 +83,43 @@ main {
   cursor: pointer;
 }
 
-#export {
+.export {
   background-color: #064975;
 }
 
-#edit {
+.edit {
   background-color: #8d4400;
 }
 
-#delete {
+.delete {
   background-color: #610202;
 }
 
-#export:hover,
-#edit:hover,
-#delete:hover {
+.export:hover,
+.edit:hover,
+.delete:hover {
   background-color: #dcf1d2;
   color: #212223;
+}
+
+#navigation {
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+}
+
+#navigation > button {
+  padding: .6em 1.2em;
+  margin: 0 .5em;
+  border-radius: 2em;
+  height: fit-content;
+  font-size: 1em;
+  font-weight: 600;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+#navigation > button:hover {
+  background-color: #cbf1bf;
 }
