@@ -4,10 +4,10 @@ require_once("../helpers/validate_json.php");
 require_once("../helpers/escape-rooms/cruds.php");
 
 $input_data = file_get_contents("php://input");
-$room;
+$room_data;
 
 if (strlen($input_data) > 0 && is_valid_json($input_data)) {
-    $room = json_decode($input_data, true);
+    $room_data = json_decode($input_data, true);
 }
 else {
     http_response_code(400);

@@ -59,7 +59,8 @@ function deleteRoom($roomId) {
         $delete = "DELETE FROM room WHERE id = :room_id";
 
         $stmt = $connection->prepare($delete);
-        $stmt->execute(["name" => $roomId]);
+        $stmt->bindParam(':room_id', $roomId);
+        $stmt->execute();
 
         if ($stmt->affected_rows  > 0) {
             return ["status" => "ERROR", "message" => "No such room in the database!", "code" => 400];

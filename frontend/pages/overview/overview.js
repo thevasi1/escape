@@ -66,8 +66,9 @@ async function deleteRoom(event) {
     const key = event.target.parentElement.dataset.key;
     console.log('delete ', key);
     const headers = { "Content-Type": "application/json" };
-    const init = { method: "DELETE", headers: headers };
-    const res = await fetch("../../../backend/api/escape-room/delete-room.php", init);
+    const body = { id: key };
+    const init = { method: "POST", headers: headers, body: JSON.stringify(body) };
+    await fetch("../../../backend/api/escape-room/delete-room.php", init);
 }
 
 function logout() {
